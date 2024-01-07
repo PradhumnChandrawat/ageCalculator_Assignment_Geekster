@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Age Calculator</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+      #calculator {
+        margin: 0 auto;
+        width: 300px;
+        height: auto;
+        border: 2px solid white;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      #dob {
+        width: 250px;
+        padding: 5px 10px;
+        margin: 10px 10px;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #calculate {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: blue;
+        color: #fff;
+        font-size: larger;
+      }
+      #result {
+        margin-top: 10px;
+      }
+      h1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <h1>Age Calculator</h1>
+      <p>Enter your date of birth</p>
+      <input type="date" id="dob" value="1998-12-09" />
+      <div class="btn">
+        <button id="calculate">Calculate Age</button>
+      </div>
+      <p id="result"></p>
+    </div>
+    <script>
+      document
+        .getElementById("calculate")
+        .addEventListener("click", function () {
+          var dob = new Date(document.getElementById("dob").value);
+          var today = new Date();
+          var age = today.getFullYear() - dob.getFullYear();
+          var m = today.getMonth() - dob.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+            age--;
+          }
+          document.getElementById("result").textContent =
+            "Your age is " + age + " years old";
+        });
+    </script>
+  </body>
+</html>
